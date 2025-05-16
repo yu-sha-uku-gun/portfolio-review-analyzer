@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>レビュー分析アプリ</title>
+</head>
+<body>
+    <h1>レビューCSVアップローダー</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="アップロード">
+    </form>
+
+    {% if reviews %}
+        <h2>アップロードされたレビュー：</h2>
+        <ul>
+        {% for review in reviews %}
+            <li>{{ review }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if chart_path %}
+        <h2>感情分析の結果（円グラフ）</h2>
+        <img src="{{ chart_path }}" alt="感情分析グラフ">
+    {% endif %}
+</body>
+</html>
